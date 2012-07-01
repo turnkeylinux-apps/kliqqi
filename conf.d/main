@@ -37,3 +37,8 @@ chown www-data:www-data $WEBROOT/bannedips.txt
 chown www-data:www-data $WEBROOT/approvedips.txt
 chown www-data:www-data $WEBROOT/local-antispam.txt
 
+# configure apache
+a2dissite default
+a2ensite pligg
+a2enmod rewrite
+
