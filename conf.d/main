@@ -86,6 +86,9 @@ sed -i "s|base_url.*|base_url = \"http://\".\$_SERVER[\"HTTP_HOST\"];|" $CONF
 CONF=$WEBROOT/languages/lang_english.conf
 sed -i "s|Visual_Name.*|Visual_Name = \"TurnKey Pligg\"|" $CONF
 
+# enable htaccess
+mv $WEBROOT/htaccess.default $WEBROOT/.htaccess
+
 # stop services
 /etc/init.d/mysql stop
 /etc/init.d/apache2 stop
