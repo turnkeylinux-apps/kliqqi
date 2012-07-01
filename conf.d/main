@@ -89,6 +89,10 @@ sed -i "s|Visual_Name.*|Visual_Name = \"TurnKey Pligg\"|" $CONF
 # enable htaccess
 mv $WEBROOT/htaccess.default $WEBROOT/.htaccess
 
+# secure sensitive files
+chmod 640 $WEBROOT/settings.php
+chmod 640 $WEBROOT/libs/dbconnect.php
+
 # stop services
 /etc/init.d/mysql stop
 /etc/init.d/apache2 stop
