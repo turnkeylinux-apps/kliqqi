@@ -11,3 +11,15 @@ ADMIN_MAIL=admin@example.com
 SRC=/usr/local/src
 WEBROOT=/var/www/pligg
 
+# unpack and set permissions
+unzip $SRC/Pligg_CMS_*.zip -d $(dirname $WEBROOT)
+rm $(dirname $WEBROOT)/Pligg*
+rm $SRC/Pligg_CMS_*.zip
+chown -R root:root $WEBROOT
+chown -R www-data:www-data $WEBROOT/cache
+chown -R www-data:www-data $WEBROOT/languages
+chown -R www-data:www-data $WEBROOT/templates
+chown -R www-data:www-data $WEBROOT/admin/backup
+chown -R www-data:www-data $WEBROOT/avatars/user_uploaded
+chown -R www-data:www-data $WEBROOT/avatars/groups_uploaded
+
