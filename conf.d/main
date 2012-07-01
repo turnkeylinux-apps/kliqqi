@@ -78,6 +78,10 @@ DATE="2012-01-01 01:00:00"
 $MYSQL_BATCH --database=$DB_NAME --execute "INSERT INTO links VALUES (2, 1, 'published', '261185', 1, 0, 0, 1.00, '$DATE', '$DATE', '$DATE', 1, 1, 'http://www.turnkeylinux.org/pligg', '$TITLE', '$TITLE', 'turnkey-pligg', '$CONTENT', '$CONTENT', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 0, 'queued', 0);"
 $MYSQL_BATCH --database=$DB_NAME --execute "UPDATE totals SET total=1 WHERE name=\"published\";"
 
+# set base url to be dynamic
+CONF=$WEBROOT/settings.php
+sed -i "s|base_url.*|base_url = \"http://\".\$_SERVER[\"HTTP_HOST\"];|" $CONF
+
 # stop services
 /etc/init.d/mysql stop
 /etc/init.d/apache2 stop
