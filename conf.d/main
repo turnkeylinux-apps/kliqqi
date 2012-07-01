@@ -23,3 +23,17 @@ chown -R www-data:www-data $WEBROOT/admin/backup
 chown -R www-data:www-data $WEBROOT/avatars/user_uploaded
 chown -R www-data:www-data $WEBROOT/avatars/groups_uploaded
 
+# create required files from defaults, and set permissions
+mv $WEBROOT/settings.php.default $WEBROOT/settings.php
+mv $WEBROOT/libs/dbconnect.php.default $WEBROOT/libs/dbconnect.php
+mv $WEBROOT/languages/lang_english.conf.default $WEBROOT/languages/lang_english.conf
+mv $WEBROOT/bannedips.txt.default $WEBROOT/bannedips.txt
+mv $WEBROOT/approvedips.txt.default $WEBROOT/approvedips.txt
+mv $WEBROOT/local-antispam.txt.default $WEBROOT/local-antispam.txt
+
+chown www-data:www-data $WEBROOT/settings.php
+chown www-data:www-data $WEBROOT/libs/dbconnect.php
+chown www-data:www-data $WEBROOT/bannedips.txt
+chown www-data:www-data $WEBROOT/approvedips.txt
+chown www-data:www-data $WEBROOT/local-antispam.txt
+
