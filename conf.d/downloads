@@ -1,0 +1,8 @@
+#!/bin/bash -ex
+
+ID=15 # version 1.2.2
+URL="http://forums.pligg.com/downloads.php?do=file&id=$ID&act=down&actionhash=guest"
+
+[ "$FAB_HTTP_PROXY" ] && PROXY="--proxy $FAB_HTTP_PROXY"
+curl -L -f $PROXY "$URL" -o /usr/local/src/pligg.zip
+

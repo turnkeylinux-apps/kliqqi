@@ -12,9 +12,9 @@ SRC=/usr/local/src
 WEBROOT=/var/www/pligg
 
 # unpack and set permissions
-unzip $SRC/Pligg_CMS_*.zip -d $(dirname $WEBROOT)
+unzip $SRC/pligg.zip -d $(dirname $WEBROOT)
 rm $(dirname $WEBROOT)/Pligg*
-rm $SRC/Pligg_CMS_*.zip
+rm $SRC/pligg.zip
 chown -R root:root $WEBROOT
 chown -R www-data:www-data $WEBROOT/cache
 chown -R www-data:www-data $WEBROOT/languages
