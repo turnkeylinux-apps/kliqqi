@@ -12,9 +12,10 @@ SRC=/usr/local/src
 WEBROOT=/var/www/pligg
 
 # unpack and set permissions
-unzip $SRC/pligg.zip -d $(dirname $WEBROOT)
-rm $(dirname $WEBROOT)/Pligg*
+unzip $SRC/pligg.zip -d $SRC
 rm $SRC/pligg.zip
+mv $SRC/pligg* $WEBROOT
+
 chown -R root:root $WEBROOT
 chown -R www-data:www-data $WEBROOT/cache
 chown -R www-data:www-data $WEBROOT/languages
@@ -27,15 +28,9 @@ chown -R www-data:www-data $WEBROOT/avatars/groups_uploaded
 mv $WEBROOT/settings.php.default $WEBROOT/settings.php
 mv $WEBROOT/libs/dbconnect.php.default $WEBROOT/libs/dbconnect.php
 mv $WEBROOT/languages/lang_english.conf.default $WEBROOT/languages/lang_english.conf
-mv $WEBROOT/bannedips.txt.default $WEBROOT/bannedips.txt
-mv $WEBROOT/approvedips.txt.default $WEBROOT/approvedips.txt
-mv $WEBROOT/local-antispam.txt.default $WEBROOT/local-antispam.txt
 
 chown www-data:www-data $WEBROOT/settings.php
 chown www-data:www-data $WEBROOT/libs/dbconnect.php
-chown www-data:www-data $WEBROOT/bannedips.txt
-chown www-data:www-data $WEBROOT/approvedips.txt
-chown www-data:www-data $WEBROOT/local-antispam.txt
 
 # configure apache
 a2dissite default
@@ -60,13 +55,13 @@ DBCON="dbname=$DB_NAME&dbuser=$DB_USER&dbpass=$DB_PASS&dbhost=localhost&tablepre
 URL="http://127.0.0.1/install/install.php"
 CURL="curl -c /tmp/cookie -b /tmp/cookie"
 
-$CURL "${URL}"
-$CURL "${URL}?language=local"
-$CURL "${URL}?step=1"
-$CURL "${URL}" --data "Submit=Next&language=&step=2"
-$CURL "${URL}" --data "${DBCON}&Submit=Check+Settings&language=&step=3"
-$CURL "${URL}" --data "${DBCON}&Submit=Next&language=&step=4"
-$CURL "${URL}" --data "godlogin=$ADMIN_NAME&godpassword=$ADMIN_PASS&godpassword2=$ADMIN_PASS&godemail=$EMAIL&Submit=Create+Admin+Account&language=&step=5"
+# $CURL "${URL}"
+# $CURL "${URL}?language=local"
+$CURL "${URL}?step=1&language=english"
+$CURL "${URL}" --data "Submit=Next+Step&language=english&step=2"
+$CURL "${URL}" --data "${DBCON}&Submit=Check+Settings&language=english&step=3"
+$CURL "${URL}" --data "${DBCON}&Submit=Next+Step&language=english&step=4"
+$CURL "${URL}" --data "adminlogin=$ADMIN_NAME&adminpassword=$ADMIN_PASS&adminpassword2=$ADMIN_PASS&adminemail=$EMAIL&Submit=Create+Admin+Account&language=english&step=5"
 
 rm -f /tmp/cookie
 rm -rf $WEBROOT/install
