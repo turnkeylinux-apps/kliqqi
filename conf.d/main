@@ -33,7 +33,7 @@ chown www-data:www-data $WEBROOT/settings.php
 chown www-data:www-data $WEBROOT/libs/dbconnect.php
 
 # configure apache
-a2dissite default
+a2dissite 000-default
 a2ensite pligg
 a2enmod rewrite
 
