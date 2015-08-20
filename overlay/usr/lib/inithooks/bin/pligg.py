@@ -9,6 +9,7 @@ Option:
 
 import sys
 import getopt
+import inithooks_cache
 import random
 import string
 import hashlib
@@ -54,6 +55,8 @@ def main():
             "Pligg Email",
             "Enter email address for the Pligg 'admin' account.",
             "admin@example.com")
+
+    inithooks_cache.write('APP_EMAIL', email)
 
     salt = ''.join((random.choice(string.letters+string.digits) for x in range(9)))
     hash = salt + hashlib.sha1(salt + password).hexdigest()
