@@ -68,9 +68,9 @@ rm -rf $WEBROOT/install
 
 # create welcome story
 TITLE="Welcome to TurnKey Pligg"
-CONTENT='Lets get you started... Log into the <a href=\"/admin\">admin area</a> as <b>admin</b> and customize your your site. For more information check out the <a href=\"http://www.turnkeylinux.org/pligg\">release notes</a> and the official <a href=\"http://forums.pligg.com\">Pligg forums</a>.'
+CONTENT='Lets get you started... Log into the <a href=\"/admin\">admin area</a> as <b>admin</b> and customize your your site. For more information check out the <a href=\"https://www.turnkeylinux.org/pligg\">release notes</a> and the official <a href=\"http://forums.pligg.com\">Pligg forums</a>.'
 DATE="2012-01-01 01:00:00"
-$MYSQL_BATCH --database=$DB_NAME --execute "INSERT INTO links VALUES (2, 1, 'published', '261185', 1, 0, 0, 1.00, '$DATE', '$DATE', '$DATE', 1, 1, 'http://www.turnkeylinux.org/pligg', '$TITLE', '$TITLE', 'turnkey-pligg', '$CONTENT', '$CONTENT', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 0, 'queued', 0);"
+$MYSQL_BATCH --database=$DB_NAME --execute "INSERT INTO links VALUES (2, 1, 'published', '261185', 1, 0, 0, 1.00, '$DATE', '$DATE', '$DATE', 1, 1, 'https://www.turnkeylinux.org/pligg', '$TITLE', '$TITLE', 'turnkey-pligg', '$CONTENT', '$CONTENT', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 0, 'queued', 0);"
 $MYSQL_BATCH --database=$DB_NAME --execute "UPDATE totals SET total=1 WHERE name=\"published\";"
 
 # set base url to be dynamic
