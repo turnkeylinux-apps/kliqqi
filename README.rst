@@ -1,7 +1,7 @@
-Pligg - Social publishing CMS
+Kliqqi - Social publishing CMS
 =============================
 
-`Pligg`_ is an open source CMS (Content Management System) that provides
+`Kliqqi`_ is an open source CMS (Content Management System) that provides
 social publishing software that encourages visitors to register on your
 website so that they can submit content and connect with other users.
 Create websites where stories are created and voted on by members, not
@@ -10,9 +10,9 @@ website editors.
 This appliance includes all the standard features in `TurnKey Core`_,
 and on top of that:
 
-- Pligg configurations:
+- Kliqqi configurations:
    
-   - Installed from upstream source code to /var/www/pligg
+   - Installed from upstream source code to /var/www/kliqqi
 
 - SSL support out of the box.
 - `Adminer`_ administration frontend for MySQL (listening on port
@@ -25,9 +25,9 @@ Credentials *(passwords set at first boot)*
 -------------------------------------------
 
 -  Webmin, SSH, MySQL, Adminer: username **root**
--  Pligg: username **admin**
+-  Kliqqi: username **admin**
 
 
-.. _Pligg: http://pligg.com/
+.. _Kliqqi: http://kliqqi.com/
 .. _TurnKey Core: https://www.turnkeylinux.org/core
 .. _Adminer: http://www.adminer.org/
