@@ -1,8 +1,0 @@
-#!/bin/bash -e
-# set pligg admin password and email
-
-. /etc/default/inithooks
-
-[ -e $INITHOOKS_CONF ] && . $INITHOOKS_CONF
-$INITHOOKS_PATH/bin/pligg.py --pass="$APP_PASS" --email="$APP_EMAIL"
-

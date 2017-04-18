@@ -1,5 +1,5 @@
 #!/usr/bin/python
-"""Set Pligg admin password and email
+"""Set Kliqqi admin password and email
 
 Option:
     --pass=     unless provided, will ask interactively
@@ -44,16 +44,16 @@ def main():
     if not password:
         d = Dialog('TurnKey Linux - First boot configuration')
         password = d.get_password(
-            "Pligg Password",
-            "Enter new password for the Pligg 'admin' account.")
+            "Kliqqi Password",
+            "Enter new password for the Kliqqi 'admin' account.")
 
     if not email:
         if 'd' not in locals():
             d = Dialog('TurnKey Linux - First boot configuration')
 
         email = d.get_email(
-            "Pligg Email",
-            "Enter email address for the Pligg 'admin' account.",
+            "Kliqqi Email",
+            "Enter email address for the Kliqqi 'admin' account.",
             "admin@example.com")
 
     inithooks_cache.write('APP_EMAIL', email)
@@ -62,8 +62,8 @@ def main():
     hash = salt + hashlib.sha1(salt + password).hexdigest()
 
     m = MySQL()
-    m.execute('UPDATE pligg.users SET user_pass=\"%s\" WHERE user_login=\"admin\";' % hash)
-    m.execute('UPDATE pligg.users SET user_email=\"%s\" WHERE user_login=\"admin\";' % email)
+    m.execute('UPDATE kliqqi.users SET user_pass=\"%s\" WHERE user_login=\"admin\";' % hash)
+    m.execute('UPDATE kliqqi.users SET user_email=\"%s\" WHERE user_login=\"admin\";' % email)
 
 if __name__ == "__main__":
     main()

@@ -1,7 +1,7 @@
 #!/bin/sh -ex
 
-DB_NAME=pligg
-DB_USER=pligg
+DB_NAME=kliqqi
+DB_USER=kliqqi
 DB_PASS=$(mcookie)
 
 ADMIN_NAME=admin
@@ -9,12 +9,12 @@ ADMIN_PASS=turnkey
 ADMIN_MAIL=admin@example.com
 
 SRC=/usr/local/src
-WEBROOT=/var/www/pligg
+WEBROOT=/var/www/kliqqi
 
 # unpack and set permissions
-unzip $SRC/pligg.zip -d $SRC
-rm $SRC/pligg.zip
-mv $SRC/pligg* $WEBROOT
+unzip $SRC/Kliqqi*.zip -d $SRC
+rm $SRC/Kliqqi*.zip
+mv $SRC/Kliqqi* $WEBROOT
 
 chown -R root:root $WEBROOT
 chown -R www-data:www-data $WEBROOT/cache
@@ -34,7 +34,7 @@ chown www-data:www-data $WEBROOT/libs/dbconnect.php
 
 # configure apache
 a2dissite 000-default
-a2ensite pligg
+a2ensite kliqqi
 a2enmod rewrite
 
 # start services
@@ -67,10 +67,10 @@ rm -f /tmp/cookie
 rm -rf $WEBROOT/install
 
 # create welcome story
-TITLE="Welcome to TurnKey Pligg"
-CONTENT='Lets get you started... Log into the <a href=\"/admin\">admin area</a> as <b>admin</b> and customize your your site. For more information check out the <a href=\"https://www.turnkeylinux.org/pligg\">release notes</a> and the official <a href=\"http://forums.pligg.com\">Pligg forums</a>.'
+TITLE="Welcome to TurnKey Kliqqi"
+CONTENT='Lets get you started... Log into the <a href=\"/admin\">admin area</a> as <b>admin</b> and customize your your site. For more information check out the <a href=\"https://www.turnkeylinux.org/kliqqi\">release notes</a> and the official <a href=\"http://kliqqi.com/forum/\">Kliqqi forums</a>.'
 DATE="2012-01-01 01:00:00"
-$MYSQL_BATCH --database=$DB_NAME --execute "INSERT INTO links VALUES (2, 1, 'published', '261185', 1, 0, 0, 1.00, '$DATE', '$DATE', '$DATE', 1, 1, 'https://www.turnkeylinux.org/pligg', '$TITLE', '$TITLE', 'turnkey-pligg', '$CONTENT', '$CONTENT', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 0, 'queued', 0);"
+$MYSQL_BATCH --database=$DB_NAME --execute "INSERT INTO links VALUES (2, 1, 'published', '261185', 1, 0, 0, 1.00, '$DATE', '$DATE', '$DATE', 1, 1, 'https://www.turnkeylinux.org/kliqqi', '$TITLE', '$TITLE', 'turnkey-kliqqi', '$CONTENT', '$CONTENT', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 0, 'queued', 0);"
 $MYSQL_BATCH --database=$DB_NAME --execute "UPDATE totals SET total=1 WHERE name=\"published\";"
 
 # set base url to be dynamic
@@ -79,7 +79,7 @@ sed -i "s|base_url.*|base_url = \"http://\".\$_SERVER[\"HTTP_HOST\"];|" $CONF
 
 # set site name
 CONF=$WEBROOT/languages/lang_english.conf
-sed -i "s|Visual_Name.*|Visual_Name = \"TurnKey Pligg\"|" $CONF
+sed -i "s|Visual_Name.*|Visual_Name = \"TurnKey Kliqqi\"|" $CONF
 
 # enable htaccess
 mv $WEBROOT/htaccess.default $WEBROOT/.htaccess
