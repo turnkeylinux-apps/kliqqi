@@ -38,8 +38,8 @@ a2ensite kliqqi
 a2enmod rewrite
 
 # start services
-/etc/init.d/mysql start
-/etc/init.d/apache2 start
+service	mysql start
+service apache2 start
 
 # setup the database
 MYSQL_BATCH="mysql --user=root --password=$MYSQL_PASS --batch"
@@ -89,6 +89,5 @@ chmod 640 $WEBROOT/settings.php
 chmod 640 $WEBROOT/libs/dbconnect.php
 
 # stop services
-/etc/init.d/mysql stop
-/etc/init.d/apache2 stop
-
+service mysql stop
+service apache2 stop
